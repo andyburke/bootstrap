@@ -20,7 +20,7 @@
 // Via: ctalkington (https://github.com/twitter/bootstrap/pull/2711)
 
 !function( $ ) {
-    "use strict"
+    "use strict";
 
     /* TOUCH SUPPORT */
 
@@ -65,9 +65,10 @@
             this.touch.endX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX
             this.touch.endY = e.originalEvent.touches ? e.originalEvent.touches[0].pageY : e.pageY
 
-            this.touch.isScroll = !!(Math.abs(this.touch.endX - this.touch.startX) < Math.abs(this.touch.endY - this.touch.startY))
+            this.touch.isScroll = (Math.abs(this.touch.endX - this.touch.startX) < Math.abs(this.touch.endY - this.touch.startY))
 
-            !this.touch.isScroll && e.preventDefault()
+            if ( !this.touch.isScroll )
+              e.preventDefault()
         }
 
       , end: function(e) {
