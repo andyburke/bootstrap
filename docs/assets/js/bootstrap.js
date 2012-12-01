@@ -2084,10 +2084,10 @@
             return {
                 startedAt: 0
             ,   endedAt: 0
-            ,   startX: 0
-            ,   endX: 0
-            ,   startY: 0
-            ,   endY: 0
+            ,   startX: -1
+            ,   endX: -1
+            ,   startY: -1
+            ,   endY: -1
             ,   isScroll: false
             }
         }
@@ -2110,7 +2110,7 @@
 
       , end: function(e) {
             this.touch.endedAt = e.timeStamp
-            var distance = (this.touch.startX === 0) ? 0 : Math.abs(this.touch.endX - this.touch.startX)
+            var distance = (this.touch.startX === -1 || this.touch.endX === -1) ? 0 : Math.abs(this.touch.endX - this.touch.startX)
 
             if (!this.touch.isScroll && this.touch.startedAt !== 0) {
                 if ((this.touch.endedAt - this.touch.startedAt) < this.options.touchMaxTime && distance > this.options.touchMaxDistance) {
